@@ -25,7 +25,9 @@ require("lazy").setup({
     missing = true,
   },
   spec = {
-    { import = 'config.plugins.treesitter' },
-    { import = 'config.plugins.commenting' },
+    { import = 'config.plugins.utils' },
+    { import = 'config.plugins.tooling' },
+    { import = 'config.plugins.parsing' },
+    { import = 'config.plugins.editing' },
   },
 })
