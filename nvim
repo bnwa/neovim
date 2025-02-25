@@ -1,0 +1,7 @@
+#! /bin/bash
+env \
+XDG_CONFIG_HOME="/Users/$USER/Developer/neovim/config" \
+XDG_CACHE_HOME="/Users/$USER/Developer/neovim/cache" \
+XDG_DATA_HOME="/Users/$USER/Developer/neovim/share" \
+XDG_STATE_HOME="/Users/$USER/Developer/neovim/state" \
+nvim "$@"
