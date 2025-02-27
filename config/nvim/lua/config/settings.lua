@@ -1,8 +1,10 @@
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
+--
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.g.colorscheme = 'melange'
 
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync w/ system clipboard
 vim.opt.cmdheight = 0 -- Hide command-line unless in use
@@ -18,5 +20,3 @@ vim.opt.fillchars.foldopen = "" -- Closed fold gutter symbol
 vim.opt.foldcolumn = '0' -- Always hide fold column
 vim.opt.tabstop = 2 -- Define length of tab characters as number of spaces
 vim.opt.shiftwidth = 2 -- Length of indent commands as number of spaces
-
-vim.cmd.colorscheme 'habamax'
