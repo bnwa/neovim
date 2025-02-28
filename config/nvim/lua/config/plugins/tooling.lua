@@ -13,7 +13,15 @@ return {
       registries = {
         'github:bnwa/mason-registry',
         'github:mason-org/mason-registry',
-      }
+      },
+      ui = {
+        border = 'rounded',
+        icons = {
+          package_installed = "✓",
+          package_uninstalled = "✗",
+          package_pending = "⟳",
+        },
+      },
     }
   },
 }
