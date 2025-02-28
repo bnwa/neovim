@@ -1,7 +1,3 @@
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
---
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.colorscheme = 'melange'
@@ -18,5 +14,8 @@ vim.opt.expandtab = true -- Render the tab character as as many spaces as define
 vim.opt.fillchars.foldopen = "" -- Open fold gutter symbol
 vim.opt.fillchars.foldopen = "" -- Closed fold gutter symbol
 vim.opt.foldcolumn = '0' -- Always hide fold column
-vim.opt.tabstop = 2 -- Define length of tab characters as number of spaces
+vim.opt.number = true -- With 'relativenumber', show the absolute line number on the current line
+vim.opt.relativenumber = true -- Show line numbers as relative distance from current line
 vim.opt.shiftwidth = 2 -- Length of indent commands as number of spaces
+vim.opt.tabstop = 2 -- Define length of tab characters as number of spaces
+vim.opt.wrap = false -- Never wrap lines at window boundary

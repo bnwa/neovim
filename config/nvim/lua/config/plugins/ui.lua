@@ -89,6 +89,7 @@ return {
     keys = {
       { '<leader>ff', function() require('fzf-lua').git_files {} end, desc = "Find files tracked by Git" }, 
       { '<leader>fF', function() require('fzf-lua').files {} end, desc = "Find any file beneath CWD" }, 
+      { '<leader>fl', function() require('fzf-lua').buffers {} end, desc = "Find open buffers" },
     },
   },
 }

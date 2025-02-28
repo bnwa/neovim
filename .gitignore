@@ -1,0 +1,6 @@
+share/*
+!share/.gitkeep
+cache/*
+!cache/.gitkeep
+state/*
+!state/.gitkeep
