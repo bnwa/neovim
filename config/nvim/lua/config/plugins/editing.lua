@@ -18,4 +18,48 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    'echasnovski/mini.pairs',
+    version = '*',
+    opts = {}
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    opts = {},
+  },
+  -- TODO Expand config
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        textobjects = {
+          lsp_interop = {
+            enable = true,
+          },
+          select = {
+            enable = true,
+          },
+          move = {
+            enable = true,
+          },
+        }
+      }
+    end
+  },
+  {
+    'tzachar/highlight-undo.nvim',
+    opts = {
+      hlgroup = "HighlightUndo",
+      duration = 300,
+      pattern = {"*"},
+      ignored_filetypes = { "neo-tree", "fugitive", "TelescopePrompt", "mason", "lazy" },
+      -- ignore_cb is in comma as there is a default implementation. Setting
+      -- to nil will mean no default os called.
+      -- ignore_cb = nil,
+    },
+  },
+  {
+    "gbprod/yanky.nvim",
+    opts = {},
+  },
 }

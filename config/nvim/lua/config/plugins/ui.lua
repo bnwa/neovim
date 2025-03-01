@@ -3,10 +3,13 @@
 return {
   -- Icons
   {
-    'echasnovski/mini.nvim',
+    'echasnovski/mini.icons',
     version = false,
-    main = 'mini.icons',
-    opts= {}
+    opts= {},
+    config = function()
+      require('mini.icons').setup()
+      MiniIcons.mock_nvim_web_devicons()
+    end,
   },
   -- UI router for messages and notifications
   {
@@ -133,4 +136,105 @@ return {
       },
     },
   },
+  -- NB. Try MeanderingProgrammer/render-markdown.nvim if this is
+  -- too troublesome
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    opts = {},
+  },
+  {
+    'stevearc/oil.nvim',
+    lazy = false,
+    dependencies = { 'echasnovski/mini.icons' },
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      columns = {
+        'icon',
+        -- "permissions",
+        -- "size",
+        -- "mtime",
+      },
+      default_file_explorer = true,
+      delete_to_trash = true,
+      git = {
+        add = function(path) return true end,
+        mv = function(src_path, dest_path) return true end,
+        rm = function(path) return true end,
+      },
+      preview_win = {
+        disable_preview = function(filename)
+          local is_log = string.match(filename, 'log') ~= nil
+          if is_log then return false
+          else return true end
+        end,
+      },
+    },
+    keys = {
+      {
+        '<leader>ee',
+        function()
+          require('oil').toggle_float(vim.fn.getcwd())
+        end,
+        desc = "Open Oil file explorer on CWD"
+      },
+      {
+        '<leader>eb',
+        function()
+          local buf = vim.api.nvim_get_current_buf()
+          local path = vim.api.nvim_buf_get_name(buf)
+          require('oil').toggle_float(vim.fn.fnamemodify(path, ':p:h'))
+        end,
+        desc = "Open Oil file explorer on CWD"
+      }
+    },
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {
+      direction = 'float',
+      float_opts = {
+        border = 'rounded',
+        title_pos = 'center',
+      },
+      open_mapping = [[<C-\>]],
+    },
+  },
+  {
+    "lukas-reineke/virt-column.nvim",
+    opts = {
+      char = "▕",
+      virtcolumn = '66'
+    }
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'echasnovski/mini.icons' },
+    opts = {
+      options = {
+        component_separators = { left = '', right = '' },
+        globalstatus = true,
+        ignore_focus = {
+          'netrw',
+        },
+        section_separators = { left = '', right = '' },
+      },
+      sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {
+          {
+            'filename',
+            newfile_status = true, -- Display 'new file status
+            path = 1, -- relative path
+          },
+        },
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      },
+    },
+  }
 }

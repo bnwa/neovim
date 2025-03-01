@@ -7,6 +7,10 @@ return {
   },
   {
     'folke/lazydev.nvim',
-    opts = {}
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    }
   },
 }
