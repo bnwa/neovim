@@ -64,8 +64,8 @@ function M.setup(server_name, server_config)
     server_config,
     { capabilities = cmp.get_lsp_capabilities(capabilities) })
 
-  if type(config.setup) == 'function' then
-    config.setup(config)
+  if type(config.setup) == 'function' and config.setup(config) then
+    lsp[server_name].setup(config)
   else
     lsp[server_name].setup(config)
   end
