@@ -222,8 +222,14 @@ return {
         section_separators = { left = '', right = '' },
       },
       sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_a = {
+          'mode'
+        },
+        lualine_b = {
+          'branch',
+          'diff',
+          'diagnostics'
+        },
         lualine_c = {
           {
             'filename',
@@ -231,9 +237,17 @@ return {
             path = 1, -- relative path
           },
         },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_x = {
+          'encoding',
+          'fileformat',
+          {'filetype', icon_only = true }
+        },
+        lualine_y = {
+          'progress'
+        },
+        lualine_z = {
+          'location'
+        },
       },
     },
   }
