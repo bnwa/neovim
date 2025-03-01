@@ -28,6 +28,7 @@ require("lazy").setup({
     { import = 'config.plugins.utils' },
     { import = 'config.plugins.tooling' },
     { import = 'config.plugins.parsing' },
+    { import = 'config.plugins.filetypes' },
     { import = 'config.plugins.editing' },
     { import = 'config.plugins.ui' },
     { import = 'config.plugins.colorscheme' },
