@@ -60,6 +60,28 @@ return {
   },
   {
     "gbprod/yanky.nvim",
-    opts = {},
+    dependencies = {
+      'kkharji/sqlite.lua',
+    },
+    ---@module 'yanky.nvim'
+    ---@type Yank
+    opts = {
+      ring = {
+        storage = 'sqlite',
+      },
+      textobj = {
+        enabled = true,
+      }
+    },
+    keys = {
+      { 'p', '<Plug>(YankyPutAfter)', mode = {'n','x'}, desc = "Put after cursor via Yanky"},
+      { 'P', '<Plug>(YankyPutBefore)', mode = {'n','x'}, desc = "Put before cursor via Yanky"},
+      { 'gp', '<Plug>(YankyPutAfter)', mode = {'n','x'}, desc = "Put after cursor, then place cursor after, via Yanky"},
+      { 'gP', '<Plug>(YankyPutBefore)', mode = {'n','x'}, desc = "Put before cursor, then place cursor after, via Yanky"},
+      { ']p', '<Plug>(YankyPutIndentAfterLinewise)', desc = 'Put before current line, but indent to current line, via Yanky' },
+      { '[p', '<Plug>(YankyPutIndentBeforeLinewise)', desc = 'Put before current line, but indent to current line, via Yanky' },
+      { 'np', '<Plug>(YankyNextEntry)', desc = "Put next entry in Yanky ring" },
+      { 'iy', function() require('yanky.textobj').last_put() end, mode = {'o', 'x'}, },
+    }
   },
 }

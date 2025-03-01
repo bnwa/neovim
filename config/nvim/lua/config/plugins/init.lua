@@ -25,6 +25,7 @@ require("lazy").setup({
     missing = true,
   },
   spec = {
+    { import = 'config.settings' },
     { import = 'config.plugins.utils' },
     { import = 'config.plugins.tooling' },
     { import = 'config.plugins.parsing' },
