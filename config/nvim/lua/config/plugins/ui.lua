@@ -97,6 +97,15 @@ return {
       { '<leader>ff', function() require('fzf-lua').git_files {} end, desc = "Find files tracked by Git" }, 
       { '<leader>fF', function() require('fzf-lua').files {} end, desc = "Find any file beneath CWD" }, 
       { '<leader>fl', function() require('fzf-lua').buffers {} end, desc = "Find open buffers" },
+      { '<leader>fh', function() require('fzf-lua').helptags {} end, desc = "Search Vim help" },
+      { '<leader>sg', function() require('fzf-lua').live_grep {} end, desc = "Grep search at project scope" },
+      { '<leader>ss', function()
+          local buf = vim.api.nvim_get_current_buf()
+          local lsp_clients = vim.lsp.get_clients { bufnr = buf }
+          if #lsp_clients > 0 then require('fzf-lua').lsp_document_symbols {}
+          else require('fzf-lua').treesitter {} end
+        end, desc = "Search document symbols"
+      }
     },
   },
   {
@@ -214,12 +223,12 @@ return {
     dependencies = { 'echasnovski/mini.icons' },
     opts = {
       options = {
-        component_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' },
         globalstatus = true,
         ignore_focus = {
           'netrw',
         },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
       },
       sections = {
         lualine_a = {
@@ -228,17 +237,7 @@ return {
         lualine_b = {
           'branch',
           'diff',
-          {
-            'diagnostics',
-            sources = { 'nvim_lsp' },
-            sections = { 'error', 'warn', 'info', 'hint' },
-            -- symbols = {
-            --   error = lsp.diagnostics.signs[1],
-            --   warn = lsp.diagnostics.signs[2],
-            --   info = lsp.diagnostics.signs[3],
-            --   hint = lsp.diagnostics.signs[4],
-            -- },
-          }
+          { 'diagnostics', colored = true, sources = { 'nvim_lsp' } }
         },
         lualine_c = {
           {
@@ -266,4 +265,14 @@ return {
     lazy = false,
     opts = {},
   },
+  {
+    'kevinhwang91/nvim-bqf',
+    opts = {
+      auto_resize_height = true,
+      wrap = true,
+    },
+    keys = {
+      { '<leader>d', function() vim.diagnostic.setqflist {} end, desc = "List diagnostics in quickfix via nvim-bqf" },
+    }
+  }
 }
