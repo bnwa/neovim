@@ -228,7 +228,17 @@ return {
         lualine_b = {
           'branch',
           'diff',
-          'diagnostics'
+          {
+            'diagnostics',
+            sources = { 'nvim_lsp' },
+            sections = { 'error', 'warn', 'info', 'hint' },
+            -- symbols = {
+            --   error = lsp.diagnostics.signs[1],
+            --   warn = lsp.diagnostics.signs[2],
+            --   info = lsp.diagnostics.signs[3],
+            --   hint = lsp.diagnostics.signs[4],
+            -- },
+          }
         },
         lualine_c = {
           {
@@ -240,7 +250,7 @@ return {
         lualine_x = {
           'encoding',
           'fileformat',
-          {'filetype', icon_only = true }
+          {'filetype', icon_only = true, colored = false, }
         },
         lualine_y = {
           'progress'
