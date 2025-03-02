@@ -36,5 +36,17 @@ return {
         enable = true,
       },
     }
-  }
+  },
+  {
+    dir = 'user.settings',
+    optional = true,
+    virtual = true,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter'
+    },
+    opts = {
+      foldexpr = 'nvim_treesitter#foldexpr()',
+      foldmethod = 'expr',
+    },
+  },
 }

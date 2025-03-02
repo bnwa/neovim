@@ -78,8 +78,8 @@ return {
       { 'P', '<Plug>(YankyPutBefore)', mode = {'n','x'}, desc = "Put before cursor via Yanky"},
       { 'gp', '<Plug>(YankyPutAfter)', mode = {'n','x'}, desc = "Put after cursor, then place cursor after, via Yanky"},
       { 'gP', '<Plug>(YankyPutBefore)', mode = {'n','x'}, desc = "Put before cursor, then place cursor after, via Yanky"},
-      { ']p', '<Plug>(YankyPutIndentAfterLinewise)', desc = 'Put before current line, but indent to current line, via Yanky' },
-      { '[p', '<Plug>(YankyPutIndentBeforeLinewise)', desc = 'Put before current line, but indent to current line, via Yanky' },
+      { ']p', '<Plug>(YankyPutIndentAfterFilter)', desc = 'Put before current line and re-indent via Yanky' },
+      { '[p', '<Plug>(YankyPutIndentBeforeFilter)', desc = 'Put before current line adn re-indent via Yanky' },
       { 'np', '<Plug>(YankyNextEntry)', desc = "Put next entry in Yanky ring" },
       { 'iy', function() require('yanky.textobj').last_put() end, mode = {'o', 'x'}, },
     }

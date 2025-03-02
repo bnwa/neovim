@@ -272,7 +272,30 @@ return {
       wrap = true,
     },
     keys = {
-      { '<leader>d', function() vim.diagnostic.setqflist {} end, desc = "List diagnostics in quickfix via nvim-bqf" },
+      {
+        '<leader>xx',
+        function()
+          local buf = vim.api.nvim_get_current_buf()
+          local issues = vim.diagnostic.get(buf)
+          local qf_items = vim.diagnostic.toqflist(issues)
+          vim.fn.setqflist(qf_items, 'r')
+        end,
+        desc = "List diagnostics for buffer in quickfix via nvim-bqf",
+      },
+      {
+        '<leader>xX',
+        function()
+          vim.diagnostic.setqflist {}
+        end,
+        desc = "List workspace diagnostics in quickfix via nvim-bqf",
+      },
+    }
+  },
+  {
+    'rafcamlet/nvim-luapad',
+    opts = {
+      eval_on_change = false,
+      wipe = false,
     }
   }
 }
