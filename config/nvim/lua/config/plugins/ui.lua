@@ -143,6 +143,12 @@ return {
       keymap = {
         preset = 'enter',
       },
+      cmdline = {
+        completion = {
+          ghost_text = { enabled = false },
+          menu = { auto_show = true },
+        },
+      },
     },
   },
   -- NB. Try MeanderingProgrammer/render-markdown.nvim if this is
@@ -249,7 +255,7 @@ return {
         lualine_x = {
           'encoding',
           'fileformat',
-          {'filetype', icon_only = true, colored = false, }
+          {'filetype', colored = false, }
         },
         lualine_y = {
           'progress'

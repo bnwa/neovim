@@ -51,5 +51,17 @@ return {
         end)
       end
     end,
-  }
+  },
+  {
+    dir = 'user.autocmds',
+    event = 'VeryLazy',
+    virtual = true,
+    config = function()
+      local autocmd = require 'config.utils.autocmd'
+
+      autocmd.filetype({'help', 'qf'}, function()
+        vim.keymap.set('n', 'q', function() vim.cmd 'close' end, { buffer = true })
+      end)
+    end
+  },
 }
