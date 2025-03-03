@@ -26,7 +26,7 @@ return {
       },
       lsp = {
         progress = {
-          enabled = false
+          enabled = true
         },
         hover = {
           enabled = false
@@ -35,7 +35,7 @@ return {
           enabled = false
         },
         message = {
-          enabled = false
+          enabled = true
         },
         documentation = {
           enabled = false
@@ -45,7 +45,7 @@ return {
         enabled = false
       },
       notify = {
-        enabled = false
+        enabled = true
       },
       popupmenu = {
         enabled = true
