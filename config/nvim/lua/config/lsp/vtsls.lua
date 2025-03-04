@@ -1,7 +1,7 @@
 -- General LSP client so no runtime fields
----@type vim.lsp.ClientConfig
----@diagnostic disable-next-line:missing-fields
 return {
+  ---@type vim.lsp.ClientConfig
+  ---@diagnostic disable-next-line:missing-fields
   vtsls = {
     settings = {
       ['typescript.disableAutomaticTypeAcquisition'] = true,

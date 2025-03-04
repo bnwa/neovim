@@ -62,7 +62,19 @@ function M.setup(server_name, server_config)
     server_config.capabilities or {})
   local config = vim.tbl_extend('force', {},
     server_config,
-    { capabilities = cmp.get_lsp_capabilities(capabilities) })
+    { capabilities = cmp.get_lsp_capabilities(capabilities) },
+    {
+      workspace = {
+        fileOperations = {
+          willCreate = true,
+          didCreate = true,
+          willRename = true,
+          didRename = true,
+          willDelete = true,
+          didDelete = true,
+        },
+      },
+    })
 
   if type(config.setup) == 'function' and config.setup(config) then
     lsp[server_name].setup(config)
