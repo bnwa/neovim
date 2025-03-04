@@ -2,6 +2,8 @@ local USER_AUGROUP = vim.api.nvim_create_augroup('UserConfig', { clear = true })
 
 local M = {}
 
+M.AUGROUP = USER_AUGROUP
+
 function M.event(desc, evts, filter, listener)
   vim.api.nvim_create_autocmd(evts, {
     callback = listener,

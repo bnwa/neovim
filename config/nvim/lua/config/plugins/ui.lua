@@ -57,10 +57,25 @@ return {
         {
           filter = {
             cmdline = true,
-            ['not'] = { cmdline = 'wq?a?'}
+            ['not'] = {
+              any = {
+                { cmdline = 'wq?a?' },-- write msgs
+                { find = '^E%d+' },-- error msg
+                { cmdline = '^/' }, -- search input
+              }
+            }
           },
           view = 'messages'
         },
+        {
+          filter = {
+            any = {
+              { cmdline = '^/' },
+              { find = '^/' },
+            }
+          },
+          opts = { skip = true }
+        }
       },
     }
   },
@@ -183,6 +198,9 @@ return {
         add = function(path) return true end,
         mv = function(src_path, dest_path) return true end,
         rm = function(path) return true end,
+      },
+      lsp_file_methods = {
+        autosave_changes = true,
       },
       preview_win = {
         disable_preview = function(filename)

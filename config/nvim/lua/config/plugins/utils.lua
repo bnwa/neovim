@@ -6,4 +6,18 @@ return {
   {
       "gregorias/coop.nvim",
   },
+  {
+    'LunarVim/bigfile.nvim',
+    opts = {
+      filesize = 1, -- Mib
+      features = {
+        'lsp',
+        'treesitter',
+        'syntax',
+        'vimopts',
+        'filetype',
+        'matchparen',
+      }
+    }
+  }
 }
