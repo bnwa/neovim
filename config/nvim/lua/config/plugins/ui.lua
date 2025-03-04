@@ -253,6 +253,7 @@ return {
           },
         },
         lualine_x = {
+          require('lazy.status').updates,
           'encoding',
           'fileformat',
           {'filetype', colored = false, }
