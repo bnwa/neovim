@@ -305,10 +305,9 @@ return {
     }
   },
   {
-    'rafcamlet/nvim-luapad',
-    opts = {
-      eval_on_change = false,
-      wipe = false,
-    }
-  }
+    "yarospace/lua-console.nvim",
+    lazy = true,
+    opts = {},
+    keys = {'`', '<Leader>`'},
+  },
 }
