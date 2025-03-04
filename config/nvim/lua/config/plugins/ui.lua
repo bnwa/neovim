@@ -153,10 +153,7 @@ return {
         preset = 'enter',
       },
       cmdline = {
-        completion = {
-          ghost_text = { enabled = false },
-          menu = { auto_show = true },
-        },
+        enabled = false,
       },
     },
   },
