@@ -259,7 +259,14 @@ return {
           },
         },
         lualine_x = {
-          require('lazy.status').updates,
+          function ()
+            local status = require 'lazy.status'
+            if status.has_updates() then
+              return status.updates
+            else
+              return ''
+            end
+          end,
           'encoding',
           'fileformat',
           {'filetype', colored = false, }
