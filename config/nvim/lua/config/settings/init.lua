@@ -62,6 +62,25 @@ return {
       autocmd.filetype({'help', 'qf'}, function()
         vim.keymap.set('n', 'q', function() vim.cmd 'close' end, { buffer = true })
       end)
+
+      autocmd.event("Resize splits if window is resized",
+        {'VimResized'}, {'*'}, function()
+          local current_tab = vim.fn.tabpagenr()
+          vim.cmd("tabdo wincmd =")
+          vim.cmd("tabnext " .. current_tab)
+        end)
+
+      autocmd.event('Jump to last cursor position on initial open',
+        {'BufReadPost'}, {'*'}, function(args)
+          local buf = args.buf
+          if vim.b[buf].did_open then return end
+          vim.b[buf].did_open = true
+          local mark = vim.api.nvim_buf_get_mark(buf, '"')
+          local lcount = vim.api.nvim_buf_line_count(buf)
+          if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+          end
+        end)
     end
   },
 }
