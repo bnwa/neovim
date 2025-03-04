@@ -42,7 +42,7 @@ return {
         }
       },
       messages = {
-        enabled = false
+        enabled = true
       },
       notify = {
         enabled = true
@@ -52,7 +52,16 @@ return {
       },
       presets = {
         command_palette = true
-      }
+      },
+      routes = {
+        {
+          filter = {
+            cmdline = true,
+            ['not'] = { cmdline = 'wq?a?'}
+          },
+          view = 'messages'
+        },
+      },
     }
   },
   -- magit-inspired git UI
