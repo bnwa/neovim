@@ -288,7 +288,7 @@ return {
           function ()
             local status = require 'lazy.status'
             if status.has_updates() then
-              return status.updates
+              return status.updates()
             else
               return ''
             end
