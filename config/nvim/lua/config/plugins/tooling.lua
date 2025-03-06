@@ -73,7 +73,7 @@ return {
           if not server_name then
             return vim.notify('No LSP Client Configured')
           end
-          local server_config = require('config.lsp.' .. server_name)
+          local server_config = opts.servers[server_name]
           local server_on_attach = server_config.on_attach
           if server_on_attach ~= nil and server_on_attach(client, buf) then
             lsp.on_attach(client, buf)

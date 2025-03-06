@@ -2,16 +2,29 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'b0o/SchemaStore.nvim',
+      'b0o/schemastore.nvim',
     },
     opts = {
-      servers = require 'config.lsp.jsonls'
+      servers = {
+        ---@type vim.lsp.ClientConfig
+        ---@diagnostic disable-next-line:missing-fields
+        jsonls = {
+          settings = {
+            json = {
+              allowComments = { enable = true },
+              format = { enable = true },
+              validate = { enable = true },
+              schemas = {},
+            }
+          },
+          setup = function(config)
+            local schemas = require('schemastore').json.schemas()
+            vim.list_extend(config.settings.json.schemas, schemas)
+            return true
+          end
+        }
+      }
     }
-  },
-  {
-    'b0o/SchemaStore.nvim',
-    lazy = true,
-    version = false,
   },
   {
     'nvim-treesitter/nvim-treesitter',
