@@ -115,5 +115,6 @@ require("lazy").setup({
     { import = 'config.plugins.editing' },
     { import = 'config.plugins.ui' },
     { import = 'config.plugins.colorscheme' },
+    { import = 'config.plugins.assistance' },
   },
 })

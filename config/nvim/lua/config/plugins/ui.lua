@@ -135,6 +135,7 @@ return {
   {
     'saghen/blink.cmp',
     version = '*',
+    dependencies = { 'Kaiser-Yang/blink-cmp-avante' },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -162,7 +163,14 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets' },
+        default = { 'avante','lsp', 'path', 'snippets' },
+        providers = {
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {}
+          }
+        },
       },
       keymap = {
         preset = 'enter',
