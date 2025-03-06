@@ -93,6 +93,23 @@ return {
           vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
         end,
       })
+
+    -- Set global variable to detect an open/closed quickfix window
+    vim.api.nvim_create_autocmd({'FileType'}, {
+        pattern = { 'qf' },
+        callback = function(data)
+          local win = vim.api.nvim_get_current_win()
+          vim.g.is_qf_open = true
+          vim.api.nvim_create_autocmd({'WinClosed'}, {
+            once = true,
+            pattern = {'' .. win},
+            callback = function(args)
+              vim.print(args, win)
+              vim.g.is_qf_open = false
+            end
+          })
+        end
+      })
     end
   },
 }

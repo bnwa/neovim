@@ -321,10 +321,16 @@ return {
       {
         '<leader>xx',
         function()
-          local buf = vim.api.nvim_get_current_buf()
-          local issues = vim.diagnostic.get(buf)
-          local qf_items = vim.diagnostic.toqflist(issues)
-          vim.fn.setqflist(qf_items, 'r')
+          if vim.g.is_qf_open then
+            vim.cmd 'cclose'
+          else
+            local buf = vim.api.nvim_get_current_buf()
+            local issues = vim.diagnostic.get(buf)
+            local qf_items = vim.diagnostic.toqflist(issues)
+            vim.fn.setqflist(qf_items, 'r')
+            vim.cmd 'copen'
+          end
+
         end,
         desc = "List diagnostics for buffer in quickfix via nvim-bqf",
       },
