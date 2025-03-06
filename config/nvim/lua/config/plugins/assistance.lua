@@ -8,9 +8,15 @@ return {
     enabled = function()
       return type(vim.env.ANTHROPIC_API_KEY) == 'string'
     end,
+    ---@module 'avante'
+    ---@type avante.Config
+    ---@diagnostic disable-next-line:missing-fields
     opts = {
       claude = {
         model = 'claude-3-5-sonnet-20241022',
+      },
+      file_selector = {
+        file_selector = 'fzf'
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
