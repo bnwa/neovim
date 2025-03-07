@@ -319,11 +319,6 @@ return {
     },
   },
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    opts = {},
-  },
-  {
     'kevinhwang91/nvim-bqf',
     opts = {
       auto_resize_height = true,
