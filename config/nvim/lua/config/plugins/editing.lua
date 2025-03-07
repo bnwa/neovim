@@ -19,8 +19,11 @@ return {
     opts = {},
   },
   {
-    'echasnovski/mini.pairs',
-    version = '*',
+    'windwp/nvim-autopairs',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter'
+    },
+    event = "InsertEnter",
     opts = {}
   },
   {
