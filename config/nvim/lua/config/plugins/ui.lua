@@ -75,7 +75,7 @@ return {
             }
           },
           opts = { skip = true }
-        }
+        },
       },
     }
   },
@@ -192,8 +192,10 @@ return {
     lazy = false,
     ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
     opts = {
-      filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
-      buf_ignore = {},
+      preview = {
+        filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+        ignored_filetypes = {}
+      },
       max_length = 99999,
     },
   },
