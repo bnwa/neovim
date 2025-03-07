@@ -50,6 +50,8 @@ function M.on_attach(client, buf)
 
   vim.diagnostic.config(M.diagnostics)
   vim.diagnostic.enable(true, { bufnr = buf })
+
+  M.attach_keymaps(client, buf)
 end
 
 function M.setup(server_name, server_config)
@@ -80,6 +82,19 @@ function M.setup(server_name, server_config)
     lsp[server_name].setup(config)
   else
     lsp[server_name].setup(config)
+  end
+end
+
+function M.attach_keymaps(_, buf)
+  local keymaps = {
+    { '<leader>ca', vim.lsp.buf.code_action, { buffer = buf, desc = "Select code action on cursor or range" }},
+    { '<leader>cc', vim.lsp.codelens.run, { buffer = buf, desc = "Execute codelens on cursor" }},
+    { '<leader>cC', vim.lsp.codelens.refresh, { buffer = buf, desc = "Refresh codelens on cursor" }},
+    { '<leader>cr', vim.lsp.buf.rename, { buffer = buf, desc = "Rename symbol at cursor" }},
+  }
+  for _, keymap in ipairs(keymaps) do
+    local opts = keymap[3]
+    vim.keymap.set(opts.mode or 'n', keymap[1], keymap[2], opts)
   end
 end
 
