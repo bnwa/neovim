@@ -17,7 +17,7 @@ end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.g.colorscheme = 'melange'
+vim.g.colorscheme = 'mellifluous'
 
 vim.opt.autowrite = true -- Write buffers whenever buffer focus changes
 -- TODO Will be superceded by clipboard-capable SSH in 0.11
@@ -104,6 +104,7 @@ require("lazy").setup({
     notify = false,
   },
   install = {
+    colorscheme = { vim.g.colorscheme },
     missing = true,
   },
   spec = {

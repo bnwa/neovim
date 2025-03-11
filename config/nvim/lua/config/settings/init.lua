@@ -24,9 +24,6 @@ return {
         vim.api.nvim_echo(chunks, true, {})
       end
 
-      vim.cmd 'hi! link YankyPut Changed'
-      vim.cmd 'hi! link YankyYanked Changed'
-      vim.cmd 'hi! link FzfLuaPathLineNr NonText'
       if vim.g.neovide then
         vim.g.neovide_theme = 'auto' -- Neovide will manage light/dark mode
       else

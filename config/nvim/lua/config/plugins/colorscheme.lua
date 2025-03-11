@@ -1,6 +1,10 @@
 ---@module 'lazy'
 ---@type LazySpec[]
 return {
-  { "savq/melange-nvim" },
-  { 'ramojus/mellifluous.nvim' },
+  {
+    'ramojus/mellifluous.nvim',
+    lazy = false,
+    priority = 100,
+    opts = {}
+  },
 }

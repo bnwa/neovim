@@ -270,7 +270,9 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'echasnovski/mini.icons' },
+    dependencies = {
+      'echasnovski/mini.icons',
+    },
     opts = {
       options = {
         component_separators = { left = '', right = '' },
@@ -316,7 +318,7 @@ return {
           'location'
         },
       },
-    },
+    }
   },
   {
     'kevinhwang91/nvim-bqf',
