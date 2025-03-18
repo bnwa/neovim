@@ -1,152 +1,117 @@
 local shared = {
-  check = {
-    npmIsInstalled = false,
-  },
-  disableAutomaticTypeAcquisition = true,
+  -- Auto-imports and completion settings
+  autoImportFileExcludePatterns = {}, -- glob patterns to exclude from auto-imports
+  generateReturnInDocTemplate = true, -- auto-generate return type in JSDoc
+  includeCompletionsWithSnippetText = true, -- include snippet completions
+  includeCompletionsWithInsertText = true, -- include insert text completions
+  includePackageJsonAutoImports = 'auto', -- 'on' | 'off' | 'auto'
+
+  check = { npmIsInstalled = false }, -- Disable npm installation check
+  disableAutomaticTypeAcquisition = true, -- Disable automatic @types/* package acquisition
   format = {
     enabled = true,
-    indentSwitchCase = true,
+    indentSize = 2,
+    convertTabsToSpaces = true,
+    semicolons = 'remove', -- Remove all semicolons
     insertSpaceAfterCommaDelimiter = true,
-    insertSpaceAfterConstructor = false,
-    insertSpaceAfterFunctionKeywordForAnonymousFunctions = true,
-    insertSpaceAfterKeywordsInControlFlowStatements = true,
-    insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = true,
-    insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = false,
-    insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = true,
-    insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets = true,
-    insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis = false,
-    insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces = false,
-    insertSpaceAfterSemicolonInForStatements = true,
-    insertSpaceAfterTypeAssertion = true,
     insertSpaceBeforeAndAfterBinaryOperators = true,
-    insertSpaceBeforeFunctionParenthesis = false,
     insertSpaceBeforeTypeAnnotation = true,
-    organizeImportsIgnoreCase = false,
     organizeImportsCaseFirst = true,
-    placeOpenBraceOnNewLineForControlBlocks = false,
-    placeOpenBraceOnNewLineForFunctions = false,
-    semicolons = 'remove',
   },
   inlayHints = {
-    enabled = false,
-    includeInlayEnumMemberValueHints = true,
-    includeInlayFunctionLikeReturnTypeHints = true,
-    includeInlayFunctionParameterTypeHints = true,
-    includeInlayParameterNameHints = 'all',
-    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-    includeInlayVariableTypeHints = true,
-    includeInlayPropertyDeclarationTypeHints = true,
-    enumMemberValues = {
-      enabled = true,
-    },
-    functionLikeReturnTypes = {
-      enabled = true,
-    },
+    enabled = false, -- Disable inlay hints globally
+    enumMemberValues = { enabled = true },
+    functionLikeReturnTypes = { enabled = true },
     parameterNames = {
-      enabled = "all",
+      enabled = "all", -- 'none' | 'literals' | 'all'
       suppressWhenArgumentMatchesName = true,
     },
-    parameterTypes = {
-      enabled = true,
-    },
-    propertyDeclarationTypes = {
-      enabled = true,
-    },
+    parameterTypes = { enabled = true },
+    propertyDeclarationTypes = { enabled = true },
     variableTypes = {
       enabled = true,
       suppressWhenTypeMatchesName = true,
     },
   },
-  implementationsCodeLens = {
-    enabled = true,
-    showOnInterfaceMethods = true,
-  },
-  preferGoToSourceDefinition = false,
+  implementationsCodeLens = { enabled = true }, -- Show implementations in code lens
+  referencesCodeLens = { enabled = true }, -- Show references in code lens
   preferences = {
-    importModuleSpecifier = 'shortest',
+    importModuleSpecifier = 'shortest', -- Use shortest possible import paths
     importModuleSpecifierEnding = 'auto',
     includePackageJsonAutoImports = 'on',
     jsxAttributeCompletionStyle = 'auto',
     preferTypeOnlyAutoImports = true,
-    quoteStyle = 'auto',
-    renameMatchingJsxTags = true,
-    useAliasesForRenames = false,
+    quoteStyle = 'single', -- Use single quotes
   },
-  referencesCodeLens = {
-    enabled = true,
-    showOnAllFunctions = true,
-  },
-  reportStyleChecksAsWarnings = true,
   suggest = {
-    autoImports = true,
-    classMemberSnippets = {
-      enabled = true,
-    },
+    autoImports = true, -- Enable auto-imports
     completeFunctionCalls = false,
     completeJSDocs = true,
     enabled = true,
-    includeAutomaticOptionalChainCompletions = true,
     includeCompletionsForImportStatements = true,
-    jsdoc = {
-      generateReturns = true,
-    },
-    objectLiteralMethodSnippets = {
-      enabled = true,
-    },
     paths = true,
   },
-  suggestionActions = {
-    enabled = true,
-  },
-  updateImportsOnFileMove = {
-    enabled = 'always',
-  },
-  validate = {
-    enabled = true,
-  },
+  updateImportsOnFileMove = { enabled = 'always' }, -- Auto-update imports on file rename
+  validate = { enabled = true }, -- Enable TypeScript validation
 }
 
-local vtsls_format = {
+local vtsls = {
+  enableMoveToFileCodeAction = true, -- Enable move to file refactoring
+
+  -- Code lens settings
+  codeLens = {
+    references = true, -- Show references in code lens
+    implementations = true, -- Show implementations in code lens
+  },
+
+  -- Diagnostic settings
+  diagnostics = {
+    ignoredCodes = {}, -- array of diagnostic codes to ignore
+    suggestionDiagnostics = true, -- enable suggestion diagnostics
+  },
+
+  -- Server settings
+  trace = { server = "off" }, -- 'off' | 'messages' | 'verbose'
+
+  experimental = {
+    completion = { enableServerSideFuzzyMatch = true }, -- Enable fuzzy matching
+    enableProjectDiagnostics = true, -- Enable project-wide diagnostics
+  },
   format = {
     baseIndentSize = 2,
     convertTabsToSpaces = true,
     indentSize = 2,
-    indentStyle = 2,
     trimTrailingWhitespace = true,
   },
 }
 
-local vtsls = {
-  enableMoveToFileCodeAction = true,
-  experimental = {
-    completion = {
-      enableServerSideFuzzyMatch = true,
-    },
-  },
-  javascript = vtsls_format,
-  typescript = vtsls_format,
-}
-
 local ts = {
   tsserver = {
-    experimental = {
-      enabledProjectDiagnostics = true,
-    },
-    maxTsServerMemory = 8092,
-    useSyntaxServer = 'auto',
+    maxTsServerMemory = 8092, -- Max memory allocation for TS server
+    useSyntaxServer = 'auto', -- Use syntax server when available
+    logVerbosity = "normal", -- 'off' | 'terse' | 'normal' | 'verbose'
+    pluginPaths = {}, -- array of paths to TypeScript plugins
+    trace = "off", -- 'off' | 'messages' | 'verbose'
+    enableProjectDiagnostics = true, -- Enable project-wide diagnostics
     workspaceSymbols = {
-      scope = 'allOpenProjects', -- allOpenProjects | currentProject
-      excludeLibrarySymbols = true,
+      scope = 'allOpenProjects', -- Search in all open projects
+      excludeLibrarySymbols = true, -- Exclude node_modules symbols
     },
+    -- Project settings
+    disableProjectDiagnostics = false,
+    packageManager = "npm", -- 'npm' | 'yarn' | 'pnpm'
+    -- Code generation
+    generateSuggestions = true,
+    maxNodeModuleJsDepth = 2, -- depth for searching node_modules
+    -- Surveys and telemetry
+    surveys = { enabled = false },
   },
 }
 
 return {
   {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      'yioneko/nvim-vtsls'
-    },
+    dependencies = { 'yioneko/nvim-vtsls' },
     opts = {
       servers = {
         vtsls = {
@@ -164,9 +129,5 @@ return {
       }
     }
   },
-  {
-    'yioneko/nvim-vtsls',
-    config = false
-  },
+  { 'yioneko/nvim-vtsls', config = false },
 }
-
