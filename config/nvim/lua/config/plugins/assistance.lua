@@ -12,7 +12,9 @@ return {
     ---@type avante.Config
     ---@diagnostic disable-next-line:missing-fields
     opts = {
+      provider = 'claude',
       claude = {
+        max_tokens = 8192,
         model = 'claude-3-5-sonnet-20241022',
       },
       file_selector = {
