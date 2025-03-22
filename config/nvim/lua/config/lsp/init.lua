@@ -86,16 +86,35 @@ function M.setup(server_name, server_config)
 end
 
 function M.attach_keymaps(_, buf)
+  local fzf = require 'fzf-lua'
   local keymaps = {
-    { '<leader>ca', vim.lsp.buf.code_action, { buffer = buf, desc = "Select code action on cursor or range" }},
-    { '<leader>cc', vim.lsp.codelens.run, { buffer = buf, desc = "Execute codelens on cursor" }},
-    { '<leader>cC', vim.lsp.codelens.refresh, { buffer = buf, desc = "Refresh codelens on cursor" }},
-    { '<leader>cr', vim.lsp.buf.rename, { buffer = buf, desc = "Rename symbol at cursor" }},
+    { '<leader>ca',  vim.lsp.buf.code_action, { buffer = buf, desc = "Select code action on cursor or range" }},
+    { '<leader>cc',  vim.lsp.codelens.run, { buffer = buf, desc = "Execute codelens on cursor" }},
+    { '<leader>cC',  vim.lsp.codelens.refresh, { buffer = buf, desc = "Refresh codelens on cursor" }},
+    { '<leader>cr',  vim.lsp.buf.rename, { buffer = buf, desc = "Rename symbol at cursor" }},
+    { '<leader>gd',  vim.lsp.buf.definition, { buffer = buf, desc = "Jump to declaration of the symbol under the cursor" } },
+    { '<leader>sr',  fzf.lsp_references, { buffer = buf, desc = "List all the references for the symbol under the cursor" } },
+    { '<leader>ss', function()
+        local lsp_clients = M.get_clients(buf)
+        if #lsp_clients > 0 then fzf.lsp_document_symbols {}
+        else fzf.treesitter {} end
+      end, { buffer = buf, desc = "List all symbols in the buffer" }
+    },
+    { '<leader>sS',  fzf.lsp_workspace_symbols, { buffer = buf, desc = 'List all symbols in the workspace' } },
+    { '<leader>si',  fzf.lsp_implementations, { buffer = buf, desc = "List all implementations for the symbol under the cursor" } },
+    { '<leader>shk', fzf.lsp_incoming_calls, { buffer = buf, desc = 'List all call sites for the symbol under the cursor' } },
+    { '<leader>shj', fzf.lsp_outgoing_calls, { buffer = buf, desc = 'List all call sites for the symbol under the cursor' } },
+    { '<leader>xx',  fzf.lsp_document_diagnostics, { buffer = buf, desc = "List all diagnostics in the current buffer" } },
+    { '<leader>xX',  fzf.lsp_workspace_diagnostics, { buffer = buf, desc = "List all diagnostics in the current buffer" } },
   }
   for _, keymap in ipairs(keymaps) do
     local opts = keymap[3]
     vim.keymap.set(opts.mode or 'n', keymap[1], keymap[2], opts)
   end
+end
+
+function M.get_clients(buf)
+  return vim.lsp.get_clients { bufnr = buf }
 end
 
 return M
