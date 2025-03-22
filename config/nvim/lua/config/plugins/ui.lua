@@ -110,6 +110,7 @@ return {
       fzf_colors = true,
       fzf_opts = {
         ['--cycle'] = true,
+        ['--keep-right'] = true,
       },
       -- winopts = {
       --   preview = {
