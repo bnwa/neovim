@@ -112,15 +112,10 @@ return {
         ['--cycle'] = true,
         ['--keep-right'] = true,
       },
-      -- winopts = {
-      --   preview = {
-      --     default = "bat"
-      --   }
-      -- }
     },
     keys = {
-      { '<leader>ff', function() require('fzf-lua').git_files {} end, desc = "Find files tracked by Git" }, 
-      { '<leader>fF', function() require('fzf-lua').files {} end, desc = "Find any file beneath CWD" }, 
+      { '<leader>ff', function() require('fzf-lua').git_files {} end, desc = "Find files tracked by Git" },
+      { '<leader>fF', function() require('fzf-lua').files {} end, desc = "Find any file beneath CWD" },
       { '<leader>fl', function() require('fzf-lua').buffers {} end, desc = "Find open buffers" },
       { '<leader>fh', function() require('fzf-lua').helptags {} end, desc = "Search Vim help" },
       { '<leader>sg', function() require('fzf-lua').live_grep {} end, desc = "Grep search at project scope" },
