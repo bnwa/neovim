@@ -98,8 +98,22 @@ function M.attach_keymaps(_, buf)
     { '<leader>si',  fzf.lsp_implementations, { buffer = buf, desc = "List all implementations for the symbol under the cursor" } },
     { '<leader>shk', fzf.lsp_incoming_calls, { buffer = buf, desc = 'List all call sites for the symbol under the cursor' } },
     { '<leader>shj', fzf.lsp_outgoing_calls, { buffer = buf, desc = 'List all call sites for the symbol under the cursor' } },
-    { '<leader>xx',  fzf.lsp_document_diagnostics, { buffer = buf, desc = "List all diagnostics in the current buffer" } },
-    { '<leader>xX',  fzf.lsp_workspace_diagnostics, { buffer = buf, desc = "List all diagnostics in the current buffer" } },
+    { '<leader>xx',  function() fzf.lsp_document_diagnostics {
+        ['winopts.preview.layout'] = 'vertical',
+        ['winopts.width'] = 1,
+      } end, {
+        buffer = buf,
+        desc = "List all diagnostics in the current buffer"
+      }
+    },
+    { '<leader>xX',  function() fzf.lsp_workspace_diagnostics {
+        ['winopts.preview.layout'] = 'vertical',
+        ['winopts.width'] = 1,
+      } end, {
+        buffer = buf,
+        desc = "List all diagnostics in the current workspace"
+      }
+    },
   }
   for _, keymap in ipairs(keymaps) do
     local opts = keymap[3]
