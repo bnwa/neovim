@@ -33,8 +33,8 @@ local shared = {
       suppressWhenTypeMatchesName = true,
     },
   },
-  implementationsCodeLens = { enabled = true }, -- Show implementations in code lens
-  referencesCodeLens = { enabled = true }, -- Show references in code lens
+  implementationsCodeLens = { enabled = false }, -- Show implementations in code lens
+  referencesCodeLens = { enabled = false }, -- Show references in code lens
   preferences = {
     importModuleSpecifier = 'shortest', -- Use shortest possible import paths
     importModuleSpecifierEnding = 'auto',
