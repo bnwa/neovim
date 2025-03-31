@@ -53,7 +53,7 @@ return {
         'OXY2DEV/markview.nvim',
         opts = {
           preview = {
-            filetypes = { "md", "rmd", "quarto", "Avante" }
+            filetypes = { "Avante" }
           }
         },
       },

@@ -181,18 +181,19 @@ return {
       },
     },
   },
-  -- NB. Try MeanderingProgrammer/render-markdown.nvim if this is
-  -- too troublesome
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
-    ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+    opts_extends = {'preview.filetypes'},
+    ---@module 'markview.nvim'
+    ---@type mkv.config
     opts = {
       preview = {
-        filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
-        ignored_filetypes = {}
+        -- plugin default
+        filetypes = { "markdown", "rmd", "quarto", "typst" },
+        icon_provider = 'mini',
+        max_buf_lines = 10000,
       },
-      max_length = 99999,
     },
   },
   {
