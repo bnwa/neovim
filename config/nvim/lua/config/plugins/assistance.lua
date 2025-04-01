@@ -22,7 +22,8 @@ return {
       },
       web_search_engine = {
         provider = 'google'
-      }
+      },
+      disabled_tools = { 'python' },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
