@@ -184,7 +184,7 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
-    opts_extends = {'preview.filetypes'},
+    opts_extend = {'preview.filetypes'},
     ---@module 'markview.nvim'
     ---@type mkv.config
     opts = {
