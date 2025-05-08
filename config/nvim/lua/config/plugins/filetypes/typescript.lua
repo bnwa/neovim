@@ -19,17 +19,17 @@ local shared = {
     organizeImportsCaseFirst = true,
   },
   inlayHints = {
-    enabled = false, -- Disable inlay hints globally
+    enabled = true, -- Disable inlay hints globally
     enumMemberValues = { enabled = true },
     functionLikeReturnTypes = { enabled = true },
     parameterNames = {
-      enabled = "all", -- 'none' | 'literals' | 'all'
+      enabled = "none", -- 'none' | 'literals' | 'all'
       suppressWhenArgumentMatchesName = true,
     },
-    parameterTypes = { enabled = true },
-    propertyDeclarationTypes = { enabled = true },
+    parameterTypes = { enabled = false },
+    propertyDeclarationTypes = { enabled = false },
     variableTypes = {
-      enabled = true,
+      enabled = false,
       suppressWhenTypeMatchesName = true,
     },
   },
