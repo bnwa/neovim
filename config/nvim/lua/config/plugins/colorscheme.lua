@@ -7,4 +7,9 @@ return {
     priority = 100,
     opts = {}
   },
+  {
+    'savq/melange-nvim',
+    lazy = false,
+    priority = 100,
+  }
 }
